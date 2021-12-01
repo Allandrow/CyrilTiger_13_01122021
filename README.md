@@ -2,10 +2,11 @@
 
 ## Stack :
 
-- Vite
-- React
-- Typescript
-- More incoming
+- [Vite](https://vitejs.dev/)
+- [React](https://reactjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [React router](https://reactrouter.com/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
 
 ## Usage :
 
