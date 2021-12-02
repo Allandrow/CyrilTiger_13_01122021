@@ -15,7 +15,7 @@ export const Navigation = () => {
       <div>
         <a className="main-nav-item" href="/">
           <i className="fa fa-user-circle"></i>
-          Sign In
+          <span> Sign In</span>
         </a>
       </div>
     </nav>
