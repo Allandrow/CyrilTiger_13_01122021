@@ -1,6 +1,6 @@
 import { MainLayout } from '../layout/MainLayout'
 
-export const Signin = () => {
+export const Login = () => {
   return (
     <MainLayout>
       <main className="main bg-dark">
