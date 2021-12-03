@@ -13,10 +13,10 @@ export const Navigation = () => {
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
       <div>
-        <a className="main-nav-item" href="/">
+        <Link to="/sign-in" className="main-nav-item">
           <i className="fa fa-user-circle"></i>
           <span> Sign In</span>
-        </a>
+        </Link>
       </div>
     </nav>
   )

@@ -5,8 +5,10 @@ import { MainLayout } from '../layout/MainLayout'
 export const Home = () => {
   return (
     <MainLayout>
-      <Hero />
-      <Features />
+      <main>
+        <Hero />
+        <Features />
+      </main>
     </MainLayout>
   )
 }
