@@ -15,10 +15,13 @@ const slice = createSlice({
     ) => {
       state.token = body.token
     },
+    removeCredentials: (state) => {
+      state.token = null
+    },
   },
 })
 
-export const { setCredentials } = slice.actions
+export const { setCredentials, removeCredentials } = slice.actions
 
 export default slice.reducer
 

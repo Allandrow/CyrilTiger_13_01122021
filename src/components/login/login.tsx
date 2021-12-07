@@ -1,12 +1,12 @@
-import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { setCredentials } from './authSlice'
 import { useLoginMutation } from '../../app/services/auth'
 import type { LoginRequest } from '../../app/services/auth'
 import { ChangeEvent, SyntheticEvent, useState } from 'react'
+import { useAppDispatch } from '../../app/hooks'
 
 export const Login = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const [formState, setFormState] = useState<LoginRequest>({
     email: '',

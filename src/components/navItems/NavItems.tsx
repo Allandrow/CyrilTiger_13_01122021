@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom'
+import { useAppDispatch } from '../../app/hooks'
+import { removeCredentials } from '../login/authSlice'
 
 interface NavItemsProps {
   isLogged: boolean
 }
 
 export const NavItems = ({ isLogged }: NavItemsProps) => {
+  const dispatch = useAppDispatch()
+
   return (
     <>
       {isLogged ? (
@@ -13,7 +17,11 @@ export const NavItems = ({ isLogged }: NavItemsProps) => {
             <i className="fa fa-user-circle"></i>
             Tony
           </Link>
-          <Link to="/" className="main-nav-item">
+          <Link
+            to="/"
+            className="main-nav-item"
+            onClick={() => dispatch(removeCredentials())}
+          >
             <i className="fa fa-sign-out"></i>
             Sign out
           </Link>
