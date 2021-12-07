@@ -13,7 +13,7 @@ export const NavItems = ({ isLogged }: NavItemsProps) => {
     <>
       {isLogged ? (
         <>
-          <Link to="/" className="main-nav-item">
+          <Link to="/profile" className="main-nav-item">
             <i className="fa fa-user-circle"></i>
             Tony
           </Link>
@@ -35,3 +35,5 @@ export const NavItems = ({ isLogged }: NavItemsProps) => {
     </>
   )
 }
+
+// TODO : change user name to dynamic value once user is fetched

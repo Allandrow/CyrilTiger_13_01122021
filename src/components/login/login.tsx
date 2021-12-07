@@ -25,7 +25,7 @@ export const Login = () => {
       e.preventDefault()
       const user = await login(formState).unwrap()
       dispatch(setCredentials(user))
-      navigate('/')
+      navigate('/profile')
     } catch (err) {
       console.error('ERROR', err)
     }
@@ -60,5 +60,3 @@ export const Login = () => {
     </form>
   )
 }
-
-// TODO : change navigate to /profile
