@@ -25,7 +25,6 @@ export const Login = () => {
       e.preventDefault()
       const user = await login(formState).unwrap()
       dispatch(setCredentials(user))
-      console.log(dispatch(setCredentials(user)))
       navigate('/')
     } catch (err) {
       console.error('ERROR', err)
