@@ -2,10 +2,12 @@ import { useNavigate } from 'react-router-dom'
 import { setCredentials } from './authSlice'
 import { useLoginMutation } from '../../app/services/auth'
 import type { LoginRequest } from '../../app/services/auth'
-import { ChangeEvent, SyntheticEvent, useState } from 'react'
+import { ChangeEvent, SyntheticEvent, useEffect, useState } from 'react'
 import { useAppDispatch } from '../../app/hooks'
+import { useAuth } from '../../hooks/useAuth'
 
 export const Login = () => {
+  const { userToken } = useAuth()
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const [formState, setFormState] = useState<LoginRequest>({
@@ -13,6 +15,23 @@ export const Login = () => {
     password: '',
   })
   const [login] = useLoginMutation()
+
+  useEffect(() => {
+    fetch('http://localhost:3001/api/v1/user/profile', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userToken}`,
+      },
+    })
+      .then((data) => {
+        return data.json()
+      })
+      .then((res) => console.log(res))
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [userToken])
 
   const handleInputChange = ({
     target: { name, value },

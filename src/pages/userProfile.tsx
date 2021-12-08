@@ -1,6 +1,19 @@
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router'
 import { MainLayout } from '../layout/MainLayout'
+import { useAuth } from '../hooks/useAuth'
 
 export const UserProfile = () => {
+  const navigate = useNavigate()
+  const { userToken } = useAuth()
+
+  useEffect(() => {
+    if (!userToken) {
+      console.log('No JWT')
+      navigate('/')
+    }
+  }, [userToken])
+
   return (
     <MainLayout>
       <main className="main bg-dark">
@@ -47,3 +60,5 @@ export const UserProfile = () => {
     </MainLayout>
   )
 }
+
+// TODO : redirect to '/' if access without token
