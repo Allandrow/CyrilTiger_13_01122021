@@ -1,7 +1,12 @@
 import { ChangeEvent, SyntheticEvent, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useGetAuthTokenMutation } from '../../app/services/fetchApi'
+import { useNavigate } from 'react-router-dom'
+import {
+  useGetAuthTokenMutation,
+  useGetUserInfosMutation,
+} from '../../app/services/fetchApi'
 import { setToken } from '../../features/authSlice'
+import { setUser } from '../../features/userInfosSlice'
 
 export const LoginForm = () => {
   const [formState, setFormState] = useState({
@@ -9,7 +14,9 @@ export const LoginForm = () => {
     password: '',
   })
   const [getAuthToken] = useGetAuthTokenMutation()
+  const [getUserInfos] = useGetUserInfosMutation()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleChange = ({
     target: { id, value },
@@ -25,6 +32,9 @@ export const LoginForm = () => {
       e.preventDefault()
       const token = await getAuthToken(formState).unwrap()
       dispatch(setToken(token))
+      const userInfos = await getUserInfos('').unwrap()
+      dispatch(setUser(userInfos))
+      navigate('/profile')
     } catch (err) {
       console.error('ERROR', err)
     }
