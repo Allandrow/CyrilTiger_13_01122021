@@ -17,9 +17,13 @@ const userInfosSlice = createSlice({
     updateUser(state, action) {
       // stuff
     },
+    removeUser(state) {
+      state.firstName = null
+      state.lastName = null
+    },
   },
 })
 
-export const { setUser, updateUser } = userInfosSlice.actions
+export const { setUser, updateUser, removeUser } = userInfosSlice.actions
 
 export default userInfosSlice.reducer

@@ -1,13 +1,10 @@
 import logo from '../../assets/argentBankLogo.png'
 import { Link } from 'react-router-dom'
-// import { useUserFirstNameSelector } from '../../features/userInfosSlice'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../app/store'
-import { LoggedOutNav } from '../loggedOutNav/LoggedOutNav'
-import { LoggedInNav } from '../loggedInNav/LoggedInNav'
+import { useAuth } from '../../app/hooks/useAuth'
+import { NavItems } from '../navItems/NavItems'
 
 export const Navigation = () => {
-  const userFirstName = useSelector((state: RootState) => state.user.firstName)
+  const { userToken } = useAuth()
 
   return (
     <nav className="main-nav">
@@ -19,7 +16,7 @@ export const Navigation = () => {
         />
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
-      {userFirstName ? <LoggedInNav name={userFirstName} /> : <LoggedOutNav />}
+      <NavItems isLogged={userToken !== null} />
     </nav>
   )
 }

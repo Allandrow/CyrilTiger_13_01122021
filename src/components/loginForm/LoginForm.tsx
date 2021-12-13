@@ -13,6 +13,7 @@ export const LoginForm = () => {
     email: '',
     password: '',
   })
+  const [persistData, setPersistData] = useState(false)
   const [getAuthToken] = useGetAuthTokenMutation()
   const [getUserInfos] = useGetUserInfosMutation()
   const dispatch = useDispatch()
@@ -29,15 +30,23 @@ export const LoginForm = () => {
 
   const handleSubmit = async (e: SyntheticEvent) => {
     try {
+      // create a new function to put all this
       e.preventDefault()
       const token = await getAuthToken(formState).unwrap()
       dispatch(setToken(token))
+      if (persistData) {
+        localStorage.setItem('authToken', token)
+      }
       const userInfos = await getUserInfos('').unwrap()
       dispatch(setUser(userInfos))
       navigate('/profile')
     } catch (err) {
       console.error('ERROR', err)
     }
+  }
+
+  const handlePersistData = () => {
+    setPersistData((persistData) => !persistData)
   }
 
   return (
@@ -51,7 +60,7 @@ export const LoginForm = () => {
         <input type="password" id="password" onChange={handleChange} />
       </div>
       <div className="input-remember">
-        <input type="checkbox" id="remember-me" />
+        <input type="checkbox" id="remember-me" onClick={handlePersistData} />
         <label htmlFor="remember-me">Remember me</label>
       </div>
       <button className="sign-in-button" onClick={handleSubmit}>
