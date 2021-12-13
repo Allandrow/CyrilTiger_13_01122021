@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
-import { RootState } from '../store'
+import { RootState } from '../app/store'
 
-export const useAuth = () => {
+export const useAuthToken = () => {
   const userToken = useSelector((state: RootState) => state.auth.token)
   return useMemo(() => ({ userToken }), [userToken])
 }

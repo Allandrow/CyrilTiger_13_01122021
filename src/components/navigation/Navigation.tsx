@@ -1,10 +1,10 @@
 import logo from '../../assets/argentBankLogo.png'
 import { Link } from 'react-router-dom'
-import { useAuth } from '../../app/hooks/useAuth'
+import { useAuthToken } from '../../hooks/useAuthToken'
 import { NavItems } from '../navItems/NavItems'
 
 export const Navigation = () => {
-  const { userToken } = useAuth()
+  const { userToken } = useAuthToken()
 
   return (
     <nav className="main-nav">
