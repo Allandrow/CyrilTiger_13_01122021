@@ -22,7 +22,7 @@ export const NavItems = ({ isLogged = false }: any) => {
     <div>
       {isLogged ? (
         <>
-          <Link to="profile" className="main-nav-item">
+          <Link to="/profile" className="main-nav-item">
             <i className="fa fa-user-circle"></i>
             {userName}
           </Link>

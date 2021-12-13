@@ -18,8 +18,10 @@ function App() {
         dispatch(setUser(userInfos))
       }
       const token = localStorage.getItem('authToken')
-      dispatch(setToken(token))
-      fetchAndSetUser()
+      if (token) {
+        dispatch(setToken(token))
+        fetchAndSetUser()
+      }
     } catch (err) {
       // TODO : create a separate function to avoid duplication with signout
       localStorage.removeItem('authToken')
