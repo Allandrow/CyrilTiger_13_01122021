@@ -1,6 +1,19 @@
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { RootState } from '../app/store'
 import { MainLayout } from '../layout/MainLayout'
 
 export const UserPage = () => {
+  const userInfos: any = useSelector((state: RootState) => state.user)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!userInfos.firstName) {
+      navigate('/')
+    }
+  }, [])
+
   return (
     <MainLayout classNames={['main', 'bg-dark']}>
       <div className="header">
@@ -45,3 +58,5 @@ export const UserPage = () => {
     </MainLayout>
   )
 }
+
+// TODO : types
