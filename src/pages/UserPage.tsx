@@ -5,11 +5,13 @@ import { RootState } from '../app/store'
 import { MainLayout } from '../layout/MainLayout'
 
 export const UserPage = () => {
-  const userInfos: any = useSelector((state: RootState) => state.user)
+  const { firstName, lastName }: any = useSelector(
+    (state: RootState) => state.user
+  )
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!userInfos.firstName) {
+    if (!firstName) {
       navigate('/')
     }
   }, [])
@@ -20,7 +22,7 @@ export const UserPage = () => {
         <h1>
           Welcome back
           <br />
-          Tony Jarvis!
+          {`${firstName} ${lastName}`}
         </h1>
         <button className="edit-button">Edit Name</button>
       </div>
