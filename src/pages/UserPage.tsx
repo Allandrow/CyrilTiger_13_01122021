@@ -1,15 +1,17 @@
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useGetUserInfosMutation } from '../app/services/fetchApi'
 import { setToken } from '../features/authSlice'
 import { setUser } from '../features/userInfosSlice'
 import { MainLayout } from '../layout/MainLayout'
 import { useAuthToken } from '../hooks/useAuthToken'
+import { ProfileHeader } from '../components/profileHeader/ProfileHeader'
+import { RootState } from '../app/store'
 
 export const UserPage = () => {
-  const [getUserInfos, { data, isLoading, isSuccess }] =
-    useGetUserInfosMutation()
+  const [getUserInfos, { isLoading, isSuccess }] = useGetUserInfosMutation()
+  const userInfos = useSelector((state: RootState) => state.user)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { userToken } = useAuthToken()
@@ -40,17 +42,9 @@ export const UserPage = () => {
   }
 
   if (isSuccess) {
-    const { firstName, lastName }: any = data
     return (
       <MainLayout classNames={['main', 'bg-dark']}>
-        <div className="header">
-          <h1>
-            Welcome back
-            <br />
-            {`${firstName} ${lastName}`}
-          </h1>
-          <button className="edit-button">Edit Name</button>
-        </div>
+        <ProfileHeader name={userInfos} />
         <h2 className="sr-only">Accounts</h2>
         <section className="account">
           <div className="account-content-wrapper">

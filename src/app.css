@@ -282,6 +282,42 @@ body {
   color: #fff;
 }
 
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.inputs,
+.buttons {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.inputs div {
+  width: 50%;
+  max-width: 250px;
+}
+
+.buttons button{
+  padding: 8px;
+  width: 100px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  border: 0;
+}
+
+.buttons .cancel{
+  background-color: white;
+  color: #2C3E50;
+}
+
 @media (min-width: 720px) {
   .account {
     flex-direction: row;

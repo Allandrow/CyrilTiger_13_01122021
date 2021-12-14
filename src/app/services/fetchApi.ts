@@ -33,9 +33,24 @@ export const fetchApi = createApi({
         return { firstName, lastName }
       },
     }),
+    updateUserInfos: builder.mutation({
+      query: (user) => ({
+        url: 'profile',
+        method: 'PUT',
+        body: user,
+      }),
+      transformResponse: (response: any) => {
+        const { firstName, lastName } = response.body
+        return { firstName, lastName }
+      },
+    }),
   }),
 })
 
-export const { useGetAuthTokenMutation, useGetUserInfosMutation } = fetchApi
+export const {
+  useGetAuthTokenMutation,
+  useGetUserInfosMutation,
+  useUpdateUserInfosMutation,
+} = fetchApi
 
 // TODO : set interface for types

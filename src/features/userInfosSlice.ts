@@ -14,9 +14,6 @@ const userInfosSlice = createSlice({
       state.firstName = firstName
       state.lastName = lastName
     },
-    updateUser(state, action) {
-      // stuff
-    },
     removeUser(state) {
       state.firstName = null
       state.lastName = null
@@ -24,6 +21,6 @@ const userInfosSlice = createSlice({
   },
 })
 
-export const { setUser, updateUser, removeUser } = userInfosSlice.actions
+export const { setUser, removeUser } = userInfosSlice.actions
 
 export default userInfosSlice.reducer
