@@ -24,7 +24,6 @@ export const EditUserForm = ({ toggle, firstName, lastName }: any) => {
     if (firstName !== '' && lastName !== '') {
       try {
         const response = await updateUserInfos(formState).unwrap()
-        console.log(response)
         dispatch(setUser(response))
         toggle()
       } catch (err) {
