@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Transaction } from './Transaction'
 import './transactions.css'
+import { TransactionsList } from './TransactionsList'
 
 export const TransactionsPage = () => {
   const [data, setData] = useState([])
@@ -10,6 +10,7 @@ export const TransactionsPage = () => {
       .then((res) => res.json())
       .then((res) => setData(res.data))
   }, [])
+
   return (
     <main>
       <section className="account">
@@ -30,13 +31,7 @@ export const TransactionsPage = () => {
             <li>Amount</li>
             <li>Balance</li>
           </ul>
-          <ul className="transactions-list">
-            {data.map((item, index) => (
-              <li key={index}>
-                <Transaction data={item} />
-              </li>
-            ))}
-          </ul>
+          <TransactionsList data={data} />
         </section>
       )}
     </main>

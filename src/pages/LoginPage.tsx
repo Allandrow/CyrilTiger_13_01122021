@@ -1,7 +1,15 @@
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { LoginForm } from '../components/loginForm/LoginForm'
 import { MainLayout } from '../layout/MainLayout'
 
-export const LoginPage = () => {
+export const LoginPage = ({ fetchState }: any) => {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (fetchState.isSuccess) navigate('/')
+  }, [fetchState])
+
   return (
     <MainLayout>
       <main className="main bg-dark">

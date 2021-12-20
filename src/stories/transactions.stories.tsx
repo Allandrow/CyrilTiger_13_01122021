@@ -40,3 +40,19 @@ Empty.parameters = {
     ],
   },
 }
+
+export const All: any = Template.bind({})
+
+All.parameters = {
+  msw: {
+    handlers: [
+      rest.get('/transactions/:id', (req, res, ctx) => {
+        return res(
+          ctx.json({
+            data: data,
+          })
+        )
+      }),
+    ],
+  },
+}

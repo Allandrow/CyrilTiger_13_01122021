@@ -75,7 +75,7 @@ main {
   gap: 0.5rem;
 }
 
-.transactions-list{
+.transactions-list {
   display: grid;
   gap: 0.25rem;
 }
@@ -128,4 +128,20 @@ summary img {
 
 .edit-icon img {
   width: 1rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.pagination li:not(.ellipse) {
+  cursor: pointer;
+}
+
+.pagination .active {
+  text-decoration: underline;
+  font-weight: 700;
 }
