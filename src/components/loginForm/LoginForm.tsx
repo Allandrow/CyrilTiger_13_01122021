@@ -30,7 +30,6 @@ export const LoginForm = () => {
 
   const handleSubmit = async (e: SyntheticEvent) => {
     try {
-      // create a new function to put all this
       e.preventDefault()
       const token = await getAuthToken(formState).unwrap()
       dispatch(setToken(token))

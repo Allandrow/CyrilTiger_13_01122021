@@ -4,20 +4,13 @@ import { Navigation } from '../components/navigation/Navigation'
 
 interface MainLayoutProps {
   children: ReactNode
-  classNames?: string[]
 }
 
-export const MainLayout = ({ children, classNames }: MainLayoutProps) => {
-  let classes
-  if (classNames) {
-    classes = classNames
-      .reduce((string, currentName) => (string += `${currentName} `), '')
-      .trim()
-  }
+export const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <>
       <Navigation />
-      <main className={classes}>{children}</main>
+      {children}
       <Footer />
     </>
   )
