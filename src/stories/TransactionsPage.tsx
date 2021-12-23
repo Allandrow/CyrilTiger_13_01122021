@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import './transactions.css'
 import { TransactionsList } from './TransactionsList'
+import type { Data } from './data'
 
 export const TransactionsPage = () => {
-  const [data, setData] = useState([])
+  const [data, setData] = useState([] as (Data | never)[])
 
   useEffect(() => {
     fetch('/transactions/1')

@@ -1,6 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { RootState } from '../store'
 
+interface ResponseTokenBody {
+  token: string
+}
+
+interface ResponseUserBody {
+  firstName: string
+  lastName: string
+}
+
 export const fetchApi = createApi({
   reducerPath: 'fetchApi',
   baseQuery: fetchBaseQuery({
@@ -20,7 +29,7 @@ export const fetchApi = createApi({
         method: 'POST',
         body: credentials,
       }),
-      transformResponse: (response: { body: { token: string } }) =>
+      transformResponse: (response: { body: ResponseTokenBody }) =>
         response.body.token,
     }),
     getUserInfos: builder.mutation({
@@ -28,7 +37,7 @@ export const fetchApi = createApi({
         url: 'profile',
         method: 'POST',
       }),
-      transformResponse: (response: any) => {
+      transformResponse: (response: { body: ResponseUserBody }) => {
         const { firstName, lastName } = response.body
         return { firstName, lastName }
       },
@@ -39,7 +48,7 @@ export const fetchApi = createApi({
         method: 'PUT',
         body: user,
       }),
-      transformResponse: (response: any) => {
+      transformResponse: (response: { body: ResponseUserBody }) => {
         const { firstName, lastName } = response.body
         return { firstName, lastName }
       },
@@ -52,5 +61,3 @@ export const {
   useGetUserInfosMutation,
   useUpdateUserInfosMutation,
 } = fetchApi
-
-// TODO : set interface for types

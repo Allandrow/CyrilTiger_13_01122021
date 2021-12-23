@@ -1,20 +1,28 @@
 import { usePagination } from './hooks'
 
+interface PaginationProps {
+  currentPage: number
+  totalCount: number
+  pageSize: number
+  onPageChange: (page: number) => void
+  siblingCount?: number
+}
+
 export const Pagination = ({
   onPageChange,
   totalCount,
   siblingCount = 1,
   currentPage,
   pageSize,
-}: any) => {
-  const paginationRange: any = usePagination({
+}: PaginationProps) => {
+  const paginationRange = usePagination({
     currentPage,
     totalCount,
     siblingCount,
     pageSize,
   })
 
-  if (currentPage === 0 || paginationRange?.length < 2) {
+  if (currentPage === 0 || paginationRange.length < 2) {
     return null
   }
 
@@ -46,7 +54,7 @@ export const Pagination = ({
         return (
           <li
             key={index}
-            onClick={() => onPageChange(pageNumber)}
+            onClick={() => onPageChange(index + 1)}
             className={activePage ? 'active' : ''}
           >
             {pageNumber}

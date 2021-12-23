@@ -1,4 +1,4 @@
-interface Data {
+export interface Data {
   date: string
   description: string
   amount: number

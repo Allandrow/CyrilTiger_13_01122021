@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  firstName: null,
-  lastName: null,
+  firstName: undefined,
+  lastName: undefined,
 }
 
 const userInfosSlice = createSlice({
@@ -15,8 +15,8 @@ const userInfosSlice = createSlice({
       state.lastName = lastName
     },
     removeUser(state) {
-      state.firstName = null
-      state.lastName = null
+      state.firstName = undefined
+      state.lastName = undefined
     },
   },
 })

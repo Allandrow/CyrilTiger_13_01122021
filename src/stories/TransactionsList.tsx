@@ -1,8 +1,13 @@
 import { Pagination } from './Pagination'
 import { useState, useMemo } from 'react'
 import { Transaction } from './Transaction'
+import { Data } from './data'
 
-export const TransactionsList = ({ data }: any) => {
+interface TransactionsListProps {
+  data: Data[]
+}
+
+export const TransactionsList = ({ data }: TransactionsListProps) => {
   const [currentPage, setCurrentPage] = useState(1)
   const pageSize = 8
 
@@ -14,7 +19,7 @@ export const TransactionsList = ({ data }: any) => {
   return (
     <>
       <ul className="transactions-list">
-        {tableData.map((item: any, index: number) => (
+        {tableData.map((item: Data, index: number) => (
           <li key={index}>
             <Transaction data={item} />
           </li>

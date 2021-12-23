@@ -5,15 +5,23 @@ import { RootState } from '../app/store'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export const UserPage = ({ fetchState }: any) => {
-  const { isLoading, isSuccess, isError } = fetchState
+interface UserPageProps {
+  status: {
+    isLoading: boolean
+    isError: boolean
+    isSuccess: boolean
+  }
+}
+
+export const UserPage = ({ status }: UserPageProps) => {
+  const { isLoading, isSuccess, isError } = status
   const userInfos = useSelector((state: RootState) => state.user)
   const navigate = useNavigate()
   useEffect(() => {
     if (!userInfos.firstName && isError) {
       navigate('/')
     }
-  }, [fetchState, userInfos])
+  }, [status, userInfos])
 
   if (isLoading) {
     return (

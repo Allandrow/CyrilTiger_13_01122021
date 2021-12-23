@@ -5,7 +5,11 @@ import { RootState } from '../../app/store'
 import { removeToken } from '../../features/authSlice'
 import { removeUser } from '../../features/userInfosSlice'
 
-export const NavItems = ({ isLogged = false }: any) => {
+interface NavItemsProps {
+  isLogged: boolean
+}
+
+export const NavItems = ({ isLogged }: NavItemsProps) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const userName = useSelector((state: RootState) => state.user.firstName)

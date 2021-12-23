@@ -1,7 +1,12 @@
 import toggleIcon from './chevron.svg'
+import { Data } from './data'
 import editIcon from './edit-pencil.svg'
 
-export const Transaction = ({ data }: any) => {
+interface TransactionProps {
+  data: Data
+}
+
+export const Transaction = ({ data }: TransactionProps) => {
   const { date, description, amount, balance, type, category, notes } = data
   return (
     <details>

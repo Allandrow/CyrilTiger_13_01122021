@@ -1,7 +1,16 @@
 import { useState } from 'react'
 import { EditUserForm } from '../editUserForm/editUserForm'
 
-export const ProfileHeader = ({ name: { firstName, lastName } }: any) => {
+interface ProfileHeaderProps {
+  name: {
+    firstName: string | undefined
+    lastName: string | undefined
+  }
+}
+
+export const ProfileHeader = ({
+  name: { firstName, lastName },
+}: ProfileHeaderProps) => {
   const [showForm, setShowForm] = useState(false)
 
   const toggleForm = () => {

@@ -3,12 +3,20 @@ import { useNavigate } from 'react-router-dom'
 import { LoginForm } from '../components/loginForm/LoginForm'
 import { MainLayout } from '../layout/MainLayout'
 
-export const LoginPage = ({ fetchState }: any) => {
+interface LoginPageProps {
+  status: {
+    isLoading: boolean
+    isError: boolean
+    isSuccess: boolean
+  }
+}
+
+export const LoginPage = ({ status }: LoginPageProps) => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (fetchState.isSuccess) navigate('/')
-  }, [fetchState])
+    if (status.isSuccess) navigate('/')
+  }, [status])
 
   return (
     <MainLayout>

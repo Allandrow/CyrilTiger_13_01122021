@@ -1,14 +1,24 @@
-import { useState } from 'react'
+import { ChangeEvent, SyntheticEvent, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useUpdateUserInfosMutation } from '../../app/services/fetchApi'
 import { setUser } from '../../features/userInfosSlice'
 
-export const EditUserForm = ({ toggle, firstName, lastName }: any) => {
+interface EditUserFormProps {
+  toggle: () => void
+  firstName: string | undefined
+  lastName: string | undefined
+}
+
+export const EditUserForm = ({
+  toggle,
+  firstName,
+  lastName,
+}: EditUserFormProps) => {
   const [formState, setFormState] = useState({ firstName: '', lastName: '' })
   const [updateUserInfos] = useUpdateUserInfosMutation()
   const dispatch = useDispatch()
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const id = e.target.id
     setFormState((previous) => {
       return {
@@ -18,7 +28,7 @@ export const EditUserForm = ({ toggle, firstName, lastName }: any) => {
     })
   }
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault()
     const { firstName, lastName } = formState
     if (firstName !== '' && lastName !== '') {

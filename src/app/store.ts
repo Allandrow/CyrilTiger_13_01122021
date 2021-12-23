@@ -9,12 +9,10 @@ const store = configureStore({
     auth: authReducer,
     user: userInfosReducer,
   },
-  middleware: (getDefaultMiddleware): any =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(fetchApi.middleware),
 })
 
 export default store
 
 export type RootState = ReturnType<typeof store.getState>
-
-// TODO : Type

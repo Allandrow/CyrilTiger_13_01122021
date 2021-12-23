@@ -10,7 +10,8 @@ import { UserPage } from './pages/UserPage'
 
 function App() {
   const dispatch = useDispatch()
-  const [getUserInfos, fetchState] = useGetUserInfosMutation()
+  const [getUserInfos, { isError, isSuccess, isLoading }] =
+    useGetUserInfosMutation()
 
   useEffect(() => {
     const token = localStorage.getItem('authToken')
@@ -29,8 +30,14 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="login" element={<LoginPage fetchState={fetchState} />} />
-      <Route path="profile" element={<UserPage fetchState={fetchState} />} />
+      <Route
+        path="login"
+        element={<LoginPage status={{ isLoading, isError, isSuccess }} />}
+      />
+      <Route
+        path="profile"
+        element={<UserPage status={{ isLoading, isError, isSuccess }} />}
+      />
     </Routes>
   )
 }

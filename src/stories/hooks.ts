@@ -58,10 +58,8 @@ export const usePagination = ({
     }
 
     // suspend left, suspend right
-    if (shouldSuspendLeft && shouldSuspendRight) {
-      const middleRange = range(leftSiblingIndex, rightSiblingIndex)
-      return [firstPageIndex, '...', ...middleRange, '...', lastPageIndex]
-    }
+    const middleRange = range(leftSiblingIndex, rightSiblingIndex)
+    return [firstPageIndex, '...', ...middleRange, '...', lastPageIndex]
   }, [totalCount, pageSize, currentPage, siblingCount])
   return paginationRange
 }
