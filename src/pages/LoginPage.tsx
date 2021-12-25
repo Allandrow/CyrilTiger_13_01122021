@@ -1,23 +1,18 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { LoginForm } from '../components/loginForm/LoginForm'
+import { useAuthentification } from '../hooks/useAuthentification'
 import { MainLayout } from '../layout/MainLayout'
 
-interface LoginPageProps {
-  status: {
-    isLoading: boolean
-    isError: boolean
-    isSuccess: boolean
-  }
-}
-
-export const LoginPage = ({ status }: LoginPageProps) => {
+export const LoginPage = () => {
+  const authStatus = useAuthentification()
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (status.isSuccess) navigate('/')
-  }, [status])
-
+    if (authStatus.isSuccess) {
+      navigate('/')
+    }
+  }, [authStatus])
   return (
     <MainLayout>
       <main className="main bg-dark">

@@ -2,8 +2,10 @@ import { MainLayout } from '../layout/MainLayout'
 import chatIcon from '../assets/icon-chat.png'
 import moneyIcon from '../assets/icon-money.png'
 import securityIcon from '../assets/icon-security.png'
+import { useAuthentification } from '../hooks/useAuthentification'
 
 export const HomePage = () => {
+  useAuthentification()
   return (
     <MainLayout>
       <div className="hero">

@@ -4,34 +4,19 @@ import { ProfileHeader } from '../components/profileHeader/ProfileHeader'
 import { RootState } from '../app/store'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuthentification } from '../hooks/useAuthentification'
 
-interface UserPageProps {
-  status: {
-    isLoading: boolean
-    isError: boolean
-    isSuccess: boolean
-  }
-}
-
-export const UserPage = ({ status }: UserPageProps) => {
-  const { isLoading, isSuccess, isError } = status
+export const UserPage = () => {
+  const authStatus = useAuthentification()
   const userInfos = useSelector((state: RootState) => state.user)
   const navigate = useNavigate()
   useEffect(() => {
-    if (!userInfos.firstName && isError) {
+    if (authStatus.isError) {
       navigate('/')
     }
-  }, [status, userInfos])
+  }, [authStatus])
 
-  if (isLoading) {
-    return (
-      <MainLayout>
-        <h1>Loading</h1>
-      </MainLayout>
-    )
-  }
-
-  if (isSuccess || userInfos.firstName) {
+  if (userInfos.firstName) {
     return (
       <MainLayout>
         <main className="main bg-dark">
@@ -74,5 +59,3 @@ export const UserPage = ({ status }: UserPageProps) => {
 
   return null
 }
-
-// TODO : types

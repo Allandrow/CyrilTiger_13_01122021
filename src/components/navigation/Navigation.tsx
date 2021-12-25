@@ -1,11 +1,11 @@
 import logo from '../../assets/argentBankLogo.png'
 import { Link } from 'react-router-dom'
-import { useAuthToken } from '../../hooks/useAuthToken'
 import { NavItems } from '../navItems/NavItems'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../app/store'
 
 export const Navigation = () => {
-  const { userToken } = useAuthToken()
-
+  const authed = useSelector((state: RootState) => state.user.authed)
   return (
     <nav className="main-nav">
       <Link to="/" className="main-nav-logo">
@@ -16,7 +16,7 @@ export const Navigation = () => {
         />
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
-      <NavItems isLogged={userToken !== null} />
+      <NavItems isLogged={authed} />
     </nav>
   )
 }
