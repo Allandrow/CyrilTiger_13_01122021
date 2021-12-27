@@ -14,7 +14,7 @@ export const EditUserForm = ({
   firstName,
   lastName,
 }: EditUserFormProps) => {
-  const [formState, setFormState] = useState({ firstName: '', lastName: '' })
+  const [formState, setFormState] = useState({ firstName, lastName })
   const [updateUserInfos] = useUpdateUserInfosMutation()
   const dispatch = useDispatch()
 
