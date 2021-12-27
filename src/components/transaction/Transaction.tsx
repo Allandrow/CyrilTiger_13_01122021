@@ -1,6 +1,6 @@
 import toggleIcon from '../../assets/chevron.svg'
 import { Data } from '../../stories/mock-data'
-import editIcon from '../../assets/edit-pencil.svg'
+import { EditTransactionField } from '../editTransactionField/EditTransactionField'
 
 interface TransactionProps {
   data: Data
@@ -24,20 +24,8 @@ export const Transaction = ({ data }: TransactionProps) => {
           <span>Transaction Type:</span>
           <span>{type}</span>
         </li>
-        <li>
-          <span>Category:</span>
-          <span>{category}</span>
-          <span className="edit-icon">
-            <img src={editIcon} alt="" />
-          </span>
-        </li>
-        <li>
-          <span>Notes:</span>
-          <span>{notes}</span>
-          <span className="edit-icon">
-            <img src={editIcon} alt="" />
-          </span>
-        </li>
+        <EditTransactionField value={category} type="Category" />
+        <EditTransactionField value={notes} type="Notes" />
       </ul>
     </details>
   )

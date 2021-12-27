@@ -21,6 +21,9 @@ Default.parameters = {
           })
         )
       }),
+      rest.put('/transactions/:id/:field', (_, res, ctx) => {
+        return res(ctx.status(200))
+      }),
     ],
   },
 }
@@ -36,6 +39,9 @@ Empty.parameters = {
             data: [],
           })
         )
+      }),
+      rest.put('/transactions/:id/:field', (_, res, ctx) => {
+        return res(ctx.status(200))
       }),
     ],
   },

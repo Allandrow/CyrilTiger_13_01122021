@@ -124,6 +124,29 @@ summary img {
 .transaction-infos li {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
+}
+
+.transaction-infos form {
+  display: flex;
+  gap: 1rem;
+}
+
+.transaction-infos input {
+  padding: 5px;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
+  max-width: 250px;
+}
+
+.transaction-infos button:not(.editBtn) {
+  border: 1px solid #2c3e50;
+  padding: 5px;
+  color: #2c3e50;
+}
+
+.transaction-infos span {
+  padding: 5px;
 }
 
 .edit-icon img {
@@ -144,4 +167,11 @@ summary img {
 .pagination .active {
   text-decoration: underline;
   font-weight: 700;
+}
+
+.editBtn {
+  width: 1rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
 }
