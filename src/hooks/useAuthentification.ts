@@ -4,11 +4,10 @@ import { useGetUserInfosMutation } from '../app/services/fetchApi'
 import { RootState } from '../app/store'
 import { removeToken } from '../features/authSlice'
 import { setUser } from '../features/userInfosSlice'
-import { useAuthToken } from './useAuthToken'
 
 export const useAuthentification = () => {
   const authed = useSelector((state: RootState) => state.user.authed)
-  const { jwt } = useAuthToken()
+  const jwt = useSelector((state: RootState) => state.auth.token)
   const dispatch = useDispatch()
   const [getUserInfos, { isLoading, isError, isSuccess }] =
     useGetUserInfosMutation()

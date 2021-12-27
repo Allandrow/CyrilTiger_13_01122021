@@ -1,6 +1,6 @@
-import { TransactionsPage } from './TransactionsPage'
+import { TransactionsPage } from '../pages/TransactionsPage'
 import { rest } from 'msw'
-import { data } from './data'
+import { data } from './mock-data'
 
 export default {
   title: 'Transactions',

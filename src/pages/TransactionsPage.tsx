@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import './transactions.css'
-import { TransactionsList } from './TransactionsList'
-import type { Data } from './data'
+import '../css/transactions.css'
+import { TransactionsList } from '../components/transactionsList/TransactionsList'
+import type { Data } from '../stories/mock-data'
 
 export const TransactionsPage = () => {
   const [data, setData] = useState([] as (Data | never)[])

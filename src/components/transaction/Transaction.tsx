@@ -1,6 +1,6 @@
-import toggleIcon from './chevron.svg'
-import { Data } from './data'
-import editIcon from './edit-pencil.svg'
+import toggleIcon from '../../assets/chevron.svg'
+import { Data } from '../../stories/mock-data'
+import editIcon from '../../assets/edit-pencil.svg'
 
 interface TransactionProps {
   data: Data

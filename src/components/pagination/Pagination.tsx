@@ -1,4 +1,4 @@
-import { usePagination } from './hooks'
+import { usePagination } from '../../hooks/usePagination'
 
 interface PaginationProps {
   currentPage: number

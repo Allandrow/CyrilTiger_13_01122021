@@ -1,7 +1,7 @@
-import { Pagination } from './Pagination'
+import { Pagination } from '../pagination/Pagination'
 import { useState, useMemo } from 'react'
-import { Transaction } from './Transaction'
-import { Data } from './data'
+import { Transaction } from '../transaction/Transaction'
+import { Data } from '../../stories/mock-data'
 
 interface TransactionsListProps {
   data: Data[]
