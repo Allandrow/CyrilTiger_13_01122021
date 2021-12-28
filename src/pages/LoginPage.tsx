@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { LoginForm } from '../components/loginForm/LoginForm'
-import { useAuthentification } from '../hooks/useAuthentification'
+import { useRememberedUser } from '../hooks/useRememberedUser'
 import { MainLayout } from '../layout/MainLayout'
 
 export const LoginPage = () => {
-  const authStatus = useAuthentification()
+  const authStatus = useRememberedUser()
   const navigate = useNavigate()
 
   useEffect(() => {

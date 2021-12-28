@@ -2,10 +2,10 @@ import { MainLayout } from '../layout/MainLayout'
 import chatIcon from '../assets/icon-chat.png'
 import moneyIcon from '../assets/icon-money.png'
 import securityIcon from '../assets/icon-security.png'
-import { useAuthentification } from '../hooks/useAuthentification'
+import { useRememberedUser } from '../hooks/useRememberedUser'
 
 export const HomePage = () => {
-  useAuthentification()
+  useRememberedUser()
   return (
     <MainLayout>
       <div className="hero">

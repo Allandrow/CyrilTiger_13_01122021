@@ -4,10 +4,10 @@ import { ProfileHeader } from '../components/profileHeader/ProfileHeader'
 import { RootState } from '../app/store'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuthentification } from '../hooks/useAuthentification'
+import { useRememberedUser } from '../hooks/useRememberedUser'
 
 export const UserPage = () => {
-  const authStatus = useAuthentification()
+  const authStatus = useRememberedUser()
   const userInfos = useSelector((state: RootState) => state.user)
   const navigate = useNavigate()
   useEffect(() => {

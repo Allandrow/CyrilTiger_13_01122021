@@ -5,7 +5,7 @@ import { RootState } from '../app/store'
 import { removeToken } from '../features/authSlice'
 import { setUser } from '../features/userInfosSlice'
 
-export const useAuthentification = () => {
+export const useRememberedUser = () => {
   const authed = useSelector((state: RootState) => state.user.authed)
   const jwt = useSelector((state: RootState) => state.auth.token)
   const dispatch = useDispatch()
