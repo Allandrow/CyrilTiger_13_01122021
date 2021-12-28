@@ -9,8 +9,7 @@ export const useRememberedUser = () => {
   const authed = useSelector((state: RootState) => state.user.authed)
   const jwt = useSelector((state: RootState) => state.auth.token)
   const dispatch = useDispatch()
-  const [getUserInfos, { isLoading, isError, isSuccess }] =
-    useGetUserInfosMutation()
+  const [getUserInfos, { isError, isSuccess }] = useGetUserInfosMutation()
 
   useEffect(() => {
     if (jwt && !authed) {
@@ -24,6 +23,6 @@ export const useRememberedUser = () => {
     }
   }, [])
 
-  if (!jwt) return { isError: true }
-  return { isLoading, isError, isSuccess }
+  if (!jwt) return { isError: true, isSuccess }
+  return { isError, isSuccess }
 }

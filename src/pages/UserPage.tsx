@@ -7,16 +7,17 @@ import { useNavigate } from 'react-router-dom'
 import { useRememberedUser } from '../hooks/useRememberedUser'
 
 export const UserPage = () => {
-  const authStatus = useRememberedUser()
+  const { isError } = useRememberedUser()
   const userInfos = useSelector((state: RootState) => state.user)
   const navigate = useNavigate()
+
   useEffect(() => {
-    if (authStatus.isError) {
+    if (isError) {
       navigate('/')
     }
-  }, [authStatus])
+  }, [isError])
 
-  if (userInfos.firstName) {
+  if (userInfos.authed) {
     return (
       <MainLayout>
         <main className="main bg-dark">
