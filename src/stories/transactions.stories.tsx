@@ -1,15 +1,16 @@
 import { TransactionsPage } from '../pages/TransactionsPage'
 import { rest } from 'msw'
 import { data } from './mock-data'
+import { Story } from '@storybook/react'
 
 export default {
   title: 'Transactions',
   component: TransactionsPage,
 }
 
-const Template = () => <TransactionsPage />
+const Template: Story = () => <TransactionsPage />
 
-export const Default: any = Template.bind({})
+export const Default = Template.bind({})
 
 Default.parameters = {
   msw: {
@@ -28,7 +29,7 @@ Default.parameters = {
   },
 }
 
-export const Empty: any = Template.bind({})
+export const Empty = Template.bind({})
 
 Empty.parameters = {
   msw: {
@@ -47,7 +48,7 @@ Empty.parameters = {
   },
 }
 
-export const All: any = Template.bind({})
+export const All = Template.bind({})
 
 All.parameters = {
   msw: {
@@ -62,3 +63,5 @@ All.parameters = {
     ],
   },
 }
+
+// TODO : make a function getHandlers with data as argument
