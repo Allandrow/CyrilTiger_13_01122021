@@ -2,7 +2,8 @@ import { SyntheticEvent } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { RootState } from '../../app/store'
-import { removeToken } from '../../features/authSlice'
+import { cancelConnection } from '../../features/connectionSlice'
+import { removeToken } from '../../features/tokenSlice'
 import { removeUser } from '../../features/userInfosSlice'
 
 interface NavItemsProps {
@@ -17,6 +18,7 @@ export const NavItems = ({ isLogged }: NavItemsProps) => {
   const handleSignOut = (e: SyntheticEvent) => {
     e.preventDefault()
     localStorage.removeItem('authToken')
+    dispatch(cancelConnection())
     dispatch(removeToken())
     dispatch(removeUser())
     navigate('/')

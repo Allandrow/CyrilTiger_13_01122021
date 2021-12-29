@@ -4,20 +4,20 @@ import { ProfileHeader } from '../components/profileHeader/ProfileHeader'
 import { RootState } from '../app/store'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useRememberedUser } from '../hooks/useRememberedUser'
+import { useConnectionStatus } from '../hooks/useConnectionStatus'
 
 export const UserPage = () => {
-  const { isError } = useRememberedUser()
+  const connectionStatus = useConnectionStatus()
   const userInfos = useSelector((state: RootState) => state.user)
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (isError) {
+    if (connectionStatus === 'not connected') {
       navigate('/')
     }
-  }, [isError])
+  }, [connectionStatus])
 
-  if (userInfos.authed) {
+  if (connectionStatus === 'connected') {
     return (
       <MainLayout>
         <main className="main bg-dark">

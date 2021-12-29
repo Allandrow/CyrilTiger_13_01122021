@@ -5,7 +5,11 @@ import {
   useGetAuthTokenMutation,
   useGetUserInfosMutation,
 } from '../../app/services/fetchApi'
-import { setToken } from '../../features/authSlice'
+import {
+  completeConnection,
+  startConnection,
+} from '../../features/connectionSlice'
+import { setToken } from '../../features/tokenSlice'
 import { setUser } from '../../features/userInfosSlice'
 
 export const LoginForm = () => {
@@ -36,9 +40,11 @@ export const LoginForm = () => {
       if (persistData) {
         localStorage.setItem('authToken', token)
       }
+      dispatch(startConnection())
       const userInfos = await getUserInfos('').unwrap()
       dispatch(setUser(userInfos))
       navigate('/profile')
+      dispatch(completeConnection())
     } catch (err) {
       console.error('ERROR', err)
     }

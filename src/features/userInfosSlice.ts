@@ -3,7 +3,6 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   firstName: undefined,
   lastName: undefined,
-  authed: false,
 }
 
 const userInfosSlice = createSlice({
@@ -14,12 +13,10 @@ const userInfosSlice = createSlice({
       const { firstName, lastName } = action.payload
       state.firstName = firstName
       state.lastName = lastName
-      state.authed = true
     },
     removeUser(state) {
       state.firstName = undefined
       state.lastName = undefined
-      state.authed = false
     },
   },
 })

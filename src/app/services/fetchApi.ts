@@ -15,7 +15,7 @@ export const fetchApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:3001/api/v1/user/',
     prepareHeaders: (headers, { getState }) => {
-      const token = (getState() as RootState).auth.token
+      const token = (getState() as RootState).jwt.token
       if (token) {
         headers.set('authorization', `Bearer ${token}`)
       }

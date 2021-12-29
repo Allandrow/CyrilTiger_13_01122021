@@ -1,18 +1,18 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { LoginForm } from '../components/loginForm/LoginForm'
-import { useRememberedUser } from '../hooks/useRememberedUser'
+import { useConnectionStatus } from '../hooks/useConnectionStatus'
 import { MainLayout } from '../layout/MainLayout'
 
 export const LoginPage = () => {
-  const authStatus = useRememberedUser()
+  const connectionStatus = useConnectionStatus()
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (authStatus.isSuccess) {
+    if (connectionStatus === 'connected') {
       navigate('/')
     }
-  }, [authStatus])
+  }, [connectionStatus])
   return (
     <MainLayout>
       <main className="main bg-dark">

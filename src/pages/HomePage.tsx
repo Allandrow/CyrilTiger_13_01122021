@@ -2,10 +2,10 @@ import { MainLayout } from '../layout/MainLayout'
 import chatIcon from '../assets/icon-chat.png'
 import moneyIcon from '../assets/icon-money.png'
 import securityIcon from '../assets/icon-security.png'
-import { useRememberedUser } from '../hooks/useRememberedUser'
+import { useConnectionStatus } from '../hooks/useConnectionStatus'
 
 export const HomePage = () => {
-  useRememberedUser()
+  useConnectionStatus()
   return (
     <MainLayout>
       <div className="hero">
