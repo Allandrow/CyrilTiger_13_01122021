@@ -2,5 +2,4 @@
 . "$(dirname "$0")/_/husky.sh"
 
 npm run lint
-
-# TODO : add test command once jest is installed
+npm run test
