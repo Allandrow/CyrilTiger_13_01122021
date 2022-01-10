@@ -7,6 +7,7 @@ import connectionReducer from '../src/features/connectionSlice'
 import userReducer from '../src/features/userInfosSlice'
 import { Route, MemoryRouter, Routes } from 'react-router-dom'
 import { HomePage } from '../src/pages/HomePage'
+import { fetchApi } from '../src/app/services/fetchApi'
 
 const render = (
   ui: any,
@@ -14,6 +15,7 @@ const render = (
     preloadedState,
     store = configureStore({
       reducer: {
+        [fetchApi.reducerPath]: fetchApi.reducer,
         connection: connectionReducer,
         jwt: tokenReducer,
         user: userReducer,

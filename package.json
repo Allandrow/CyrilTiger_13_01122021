@@ -9,7 +9,7 @@
     "prepare": "husky install",
     "sb": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "jest --silent --noStackTrace"
+    "test": "jest --noStackTrace"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
