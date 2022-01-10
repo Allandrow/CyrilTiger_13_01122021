@@ -8,7 +8,9 @@ describe('When I connect to the site', () => {
   })
   test(`Should have a sign in link if I'm not logged in`, () => {
     render(<Navigation />)
-    expect(screen.getByText('Sign In')).toBeInTheDocument()
-    expect(screen.queryByText('Sign Out')).not.toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /sign in/i })).toBeInTheDocument()
+    expect(
+      screen.queryByRole('link', { name: /sign out/i })
+    ).not.toBeInTheDocument()
   })
 })
