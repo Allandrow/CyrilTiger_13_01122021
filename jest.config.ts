@@ -13,5 +13,6 @@ export default {
     'src/**/*.{js,jsx,ts,tsx}',
     '!src/**/*.d.ts',
     '!src/mocks/**/*',
+    '!src/stories/**/*',
   ],
 }
