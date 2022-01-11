@@ -1,4 +1,4 @@
-import reducer, { setUser, removeUser } from '../features/userInfosSlice'
+import reducer, { setUser, removeUser } from './userInfosSlice'
 
 test('should return the initial state', () => {
   expect(reducer(undefined, { type: undefined })).toEqual({

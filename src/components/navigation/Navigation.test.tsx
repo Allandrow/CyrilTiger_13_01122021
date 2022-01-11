@@ -1,5 +1,5 @@
-import { Navigation } from '../components/navigation/Navigation'
-import { render, screen } from '../../jest/test-utils'
+import { Navigation } from './Navigation'
+import { render, screen } from '../../../jest/test-utils'
 
 describe('When I connect to the site', () => {
   test('Should render the navigation', () => {

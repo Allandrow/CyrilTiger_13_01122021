@@ -1,4 +1,4 @@
-import reducer, { removeToken, setToken } from '../features/tokenSlice'
+import reducer, { removeToken, setToken } from './tokenSlice'
 
 test('should return the initial state', () => {
   expect(reducer(undefined, { type: undefined })).toEqual({
