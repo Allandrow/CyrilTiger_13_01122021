@@ -58,5 +58,9 @@ export const UserPage = () => {
     )
   }
 
-  return null
+  return (
+    <MainLayout>
+      <h1>Loading</h1>
+    </MainLayout>
+  )
 }
