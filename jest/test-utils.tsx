@@ -6,7 +6,6 @@ import tokenReducer from '../src/features/tokenSlice'
 import connectionReducer from '../src/features/connectionSlice'
 import userReducer from '../src/features/userInfosSlice'
 import { Route, MemoryRouter, Routes } from 'react-router-dom'
-import { HomePage } from '../src/pages/HomePage'
 import { fetchApi } from '../src/app/services/fetchApi'
 
 const render = (
@@ -22,15 +21,17 @@ const render = (
       },
       preloadedState,
     }),
+    route = '/',
+    initialEntries = '/',
     ...renderOptions
   }: any = {}
 ) => {
   const Wrapper = ({ children }: any) => {
     return (
       <Provider store={store}>
-        <MemoryRouter initialEntries={['/']}>
+        <MemoryRouter initialEntries={[initialEntries]}>
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path={route} element={children} />
           </Routes>
         </MemoryRouter>
       </Provider>
