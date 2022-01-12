@@ -1,7 +1,5 @@
 import { rest } from 'msw'
 
-const url = 'http://localhost:3001/api/v1/user/'
-
 const mockToken = 'Valid JWT'
 
 const mockUser = {
@@ -10,13 +8,14 @@ const mockUser = {
 }
 
 export const handlers = [
-  rest.post(`${url}login`, (_, res, ctx) => {
+  rest.post(`/login`, (_, res, ctx) => {
+    console.log('IT IS KNOWN')
     return res(ctx.status(200), ctx.json(mockToken))
   }),
-  rest.post(`${url}profile`, (_, res, ctx) => {
+  rest.post(`/profile`, (_, res, ctx) => {
     return res(ctx.status(200), ctx.json(mockUser))
   }),
-  rest.put(`${url}profile`, (_, res, ctx) => {
+  rest.put(`/profile`, (_, res, ctx) => {
     return res(ctx.status(200))
   }),
 ]

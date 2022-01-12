@@ -19,6 +19,8 @@ const render = (
         jwt: tokenReducer,
         user: userReducer,
       },
+      middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(fetchApi.middleware),
       preloadedState,
     }),
     route = '/',
