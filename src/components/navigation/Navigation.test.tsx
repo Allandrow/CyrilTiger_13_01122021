@@ -1,5 +1,9 @@
 import { Navigation } from './Navigation'
-import { render, screen } from '../../../jest/test-utils'
+import {
+  connectedPreloadedState,
+  render,
+  screen,
+} from '../../../jest/test-utils'
 
 describe('When I connect to the site', () => {
   test('Should render the navigation', () => {
@@ -11,6 +15,16 @@ describe('When I connect to the site', () => {
     expect(screen.getByRole('link', { name: /sign in/i })).toBeInTheDocument()
     expect(
       screen.queryByRole('link', { name: /sign out/i })
+    ).not.toBeInTheDocument()
+  })
+  test(`Should have a sign out and name displayed if I'm logged in`, () => {
+    render(<Navigation />, {
+      preloadedState: connectedPreloadedState,
+    })
+    expect(screen.getByRole('link', { name: /tony/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /sign out/i })).toBeInTheDocument()
+    expect(
+      screen.queryByRole('link', { name: /sign in/i })
     ).not.toBeInTheDocument()
   })
 })
