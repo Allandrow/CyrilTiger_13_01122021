@@ -1,4 +1,4 @@
-import { render, screen } from '../../jest/test-utils'
+import { render, screen, connectedPreloadedState } from '../../jest/test-utils'
 import { LoginPage } from './LoginPage'
 
 const mockedUseNavigate = jest.fn()
@@ -18,13 +18,8 @@ test(`If I'm not logged in, Login Page should be rendered`, () => {
 })
 
 test('If already logged in, should redirect to homepage', () => {
-  const preloadedState = {
-    connection: {
-      status: 'connected',
-    },
-  }
   render(<LoginPage />, {
-    preloadedState,
+    preloadedState: connectedPreloadedState,
     route: '/login',
     initialEntries: '/login',
   })

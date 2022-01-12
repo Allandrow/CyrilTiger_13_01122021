@@ -1,4 +1,4 @@
-import { render, screen } from '../../jest/test-utils'
+import { render, screen, connectedPreloadedState } from '../../jest/test-utils'
 import { UserPage } from './UserPage'
 
 const mockedUseNavigate = jest.fn()
@@ -14,24 +14,11 @@ test(`If not logged in, should redirect`, () => {
 })
 
 test(`If logged in the page should render`, () => {
-  const preloadedState = {
-    jwt: {
-      token: 'valid token',
-    },
-    connection: {
-      status: 'connected',
-    },
-    user: {
-      firstName: 'Tony',
-      lastName: 'Stark',
-    },
-  }
   render(<UserPage />, {
-    preloadedState,
+    preloadedState: connectedPreloadedState,
     route: '/profile',
     initialEntries: '/profile',
   })
-
   expect(
     screen.getByRole('heading', { name: /welcome back tony stark/i })
   ).toBeInTheDocument()
