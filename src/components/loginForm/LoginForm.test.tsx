@@ -11,11 +11,10 @@ jest.mock('react-router-dom', () => ({
 
 test('submit filled form to redirect and display name', async () => {
   render(<LoginForm />)
-  userEvent.type(
-    screen.getByRole('textbox', { name: /username/i }),
-    'tony@stark.com'
-  )
+  const userNameInput = screen.getByRole('textbox', { name: /username/i })
+  userEvent.type(userNameInput, 'tony@stark.com')
   userEvent.type(screen.getByLabelText(/password/i), '123456')
   userEvent.click(screen.getByRole('button', { name: /sign in/i }))
+  // expect(userNameInput).not.toBeInTheDocument()
   expect(true).toBe(true)
 })
