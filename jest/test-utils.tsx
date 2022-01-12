@@ -40,7 +40,10 @@ const render = (
   return rltRender(ui, { wrapper: Wrapper, ...renderOptions })
 }
 
-const connectedPreloadedState = {
+export * from '@testing-library/react'
+export { render }
+
+export const connectedPreloadedState = {
   jwt: {
     token: 'valid token',
   },
@@ -52,6 +55,3 @@ const connectedPreloadedState = {
     lastName: 'Stark',
   },
 }
-
-export * from '@testing-library/react'
-export { render, connectedPreloadedState }
