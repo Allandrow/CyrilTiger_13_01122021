@@ -27,25 +27,16 @@ test('If already logged in, should redirect to homepage', () => {
   expect(mockedUseNavigate).toHaveBeenCalled()
 })
 
-test('submit filled form to redirect', async () => {
+test('submit filled form to redirect', () => {
   render(<LoginPage />, {
     route: '/login',
     initialEntries: '/login',
   })
-  const userNameInput = screen.getByRole('textbox', { name: /username/i })
-  userEvent.type(userNameInput, 'tony@stark.com')
+  userEvent.type(
+    screen.getByRole('textbox', { name: /username/i }),
+    'tony@stark.com'
+  )
   userEvent.type(screen.getByLabelText(/password/i), '123456')
   userEvent.click(screen.getByRole('button', { name: /sign in/i }))
   expect(mockedUseNavigate).toHaveBeenCalled()
 })
-
-// test('submit error should throw', async () => {
-//   render(<LoginPage />, {
-//     route: '/login',
-//     initialEntries: '/login',
-//   })
-//   const userNameInput = screen.getByRole('textbox', { name: /username/i })
-//   userEvent.type(userNameInput, 'tony@stark.com')
-//   userEvent.click(screen.getByRole('button', { name: /sign in/i }))
-//   expect(mockedUseNavigate).not.toHaveBeenCalled()
-// })
