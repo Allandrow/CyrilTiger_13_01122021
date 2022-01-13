@@ -9,7 +9,7 @@
     "prepare": "husky install",
     "sb": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "jest --coverage --noStackTrace",
+    "test": "jest --coverage --noStackTrace --watchAll",
     "commit-test": "jest --noStackTrace --silent"
   },
   "dependencies": {
