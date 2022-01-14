@@ -1,4 +1,9 @@
-import { render, screen, connectedPreloadedState } from '../../jest/test-utils'
+import {
+  render,
+  screen,
+  connectedPreloadedState,
+  waitFor,
+} from '../../jest/test-utils'
 import { LoginPage } from './LoginPage'
 import userEvent from '@testing-library/user-event'
 
@@ -27,7 +32,7 @@ test('If already logged in, should redirect to homepage', () => {
   expect(mockedUseNavigate).toHaveBeenCalled()
 })
 
-test('submit filled form to redirect', () => {
+test('submit filled form to redirect', async () => {
   render(<LoginPage />, {
     route: '/login',
     initialEntries: '/login',
@@ -38,5 +43,8 @@ test('submit filled form to redirect', () => {
   )
   userEvent.type(screen.getByLabelText(/password/i), '123456')
   userEvent.click(screen.getByRole('button', { name: /sign in/i }))
+  await waitFor(() => {
+    expect(screen.getByRole('link', { name: /sign out/i })).toBeInTheDocument()
+  })
   expect(mockedUseNavigate).toHaveBeenCalled()
 })

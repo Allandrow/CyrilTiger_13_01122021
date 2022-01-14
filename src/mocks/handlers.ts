@@ -28,11 +28,11 @@ export const handlers = [
       return res(ctx.status(400), ctx.json({ message: 'Bad Request' }))
     }
     console.log('200 WITH', mockToken)
-    return res(ctx.status(200), ctx.json(mockToken))
+    return res(ctx.status(200), ctx.json({ body: mockToken }))
   }),
   rest.post(`${baseUrl}profile`, (_, res, ctx) => {
     console.log('GET USER, SENDING BACK', mockUser)
-    return res(ctx.status(200), ctx.json(mockUser))
+    return res(ctx.status(200), ctx.json({ body: mockUser }))
   }),
   rest.put(`${baseUrl}profile`, (req, res, ctx) => {
     console.log('received PUT request with', req.body)
