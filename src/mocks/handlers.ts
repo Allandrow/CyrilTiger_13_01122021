@@ -34,9 +34,8 @@ export const handlers = [
     console.log('GET USER, SENDING BACK', mockUser)
     return res(ctx.status(200), ctx.json(mockUser))
   }),
-  rest.put(`${baseUrl}profile`, (_, res, ctx) => {
-    return res(ctx.status(200))
+  rest.put(`${baseUrl}profile`, (req, res, ctx) => {
+    console.log('received PUT request with', req.body)
+    return res(ctx.status(200), ctx.json({ body: req.body }))
   }),
 ]
-
-// TODO : set the responses
