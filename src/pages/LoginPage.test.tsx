@@ -32,7 +32,7 @@ test('If already logged in, should redirect to homepage', () => {
   expect(mockedUseNavigate).toHaveBeenCalled()
 })
 
-test('submit filled form to redirect', async () => {
+test('submit filled form should redirect', async () => {
   render(<LoginPage />, {
     route: '/login',
     initialEntries: '/login',
