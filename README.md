@@ -7,6 +7,9 @@
 - [Typescript](https://www.typescriptlang.org/)
 - [React router](https://reactrouter.com/)
 - [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Jest](https://jestjs.io/)
+- [Testing-library](https://testing-library.com/)
+- [Storybook](https://storybook.js.org/)
 
 ## Usage :
 
@@ -34,4 +37,16 @@ Preview :
 
 ```bash
 npm run serve
+```
+
+Run tests + coverage :
+
+```bash
+npm run test
+```
+
+Storybook :
+
+```bash
+npm run sb
 ```
