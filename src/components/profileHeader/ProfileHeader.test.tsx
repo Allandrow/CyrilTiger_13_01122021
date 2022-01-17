@@ -16,18 +16,20 @@ test('Displays name in header', () => {
 
 test('Click on button shows form to edit name', () => {
   render(<ProfileHeader name={{ firstName: 'Tony', lastName: 'Stark' }} />)
-  userEvent.click(screen.getByRole('button', { name: /edit name/i }))
+  const showFormBtn = screen.getByRole('button', { name: /edit name/i })
+  userEvent.click(showFormBtn)
+  expect(showFormBtn).not.toBeInTheDocument()
   expect(screen.getByPlaceholderText(/tony/i)).toBeInTheDocument()
+  expect(screen.getByRole('button', { name: /save/i })).toBeInTheDocument()
 })
 
-test('Submitting new values toggles back the form', async () => {
+test('Submitting toggles back the form', async () => {
   const { firstName, lastName } = connectedPreloadedState.user
   render(<ProfileHeader name={{ firstName, lastName }} />, {
     preloadedState: connectedPreloadedState,
   })
   userEvent.click(screen.getByRole('button', { name: /edit name/i }))
   expect(screen.getByPlaceholderText(/tony/i)).toBeInTheDocument()
-  userEvent.type(screen.getByPlaceholderText(/tony/i), 'Jean')
   userEvent.click(screen.getByRole('button', { name: /save/i }))
   await waitFor(() => {
     expect(
