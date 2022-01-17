@@ -20,7 +20,7 @@ test('Click on button shows form to edit name', () => {
   expect(screen.getByPlaceholderText(/tony/i)).toBeInTheDocument()
 })
 
-test('Submitting new values displays them in the heading', async () => {
+test('Submitting new values toggles back the form', async () => {
   const { firstName, lastName } = connectedPreloadedState.user
   render(<ProfileHeader name={{ firstName, lastName }} />, {
     preloadedState: connectedPreloadedState,
