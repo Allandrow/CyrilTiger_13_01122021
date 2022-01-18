@@ -1,4 +1,4 @@
-import { render } from '../../jest/test-utils'
+import { render, screen } from '../../jest/test-utils'
 import { useConnectionStatus } from './useConnectionStatus'
 
 interface Token {
@@ -11,20 +11,27 @@ function getConnectionStatus(token: Token = { jwt: { token: null } }) {
   let status
   function TestComponent() {
     status = useConnectionStatus()
-    return null
+    return <h1>{status}</h1>
   }
 
   render(<TestComponent />, { preloadedState: token })
-  return status
+  return null
 }
 
-test('hook requesting user infos', () => {
+test('hook requesting user infos', async () => {
   const preloadedState = { jwt: { token: 'valid token' } }
-  const status = getConnectionStatus(preloadedState)
-  expect(status).toBe('pending')
+  getConnectionStatus(preloadedState)
+  expect(
+    await screen.findByRole('heading', { name: /pending/i })
+  ).toBeInTheDocument()
+  expect(
+    await screen.findByRole('heading', { name: /connected/i })
+  ).toBeInTheDocument()
 })
 
-test('hook not fetching', () => {
-  const status = getConnectionStatus()
-  expect(status).toBe('not connected')
+test('hook not fetching', async () => {
+  getConnectionStatus()
+  expect(
+    await screen.findByRole('heading', { name: /not connected/i })
+  ).toBeInTheDocument()
 })
